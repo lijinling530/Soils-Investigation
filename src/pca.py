@@ -17,7 +17,6 @@ X = scale(X)
 #compute Covariance Matrix
 mean_vec = np.mean(X, axis=0)
 cov_mat = (X - mean_vec).T.dot((X - mean_vec)) / (X.shape[0]-1)
-#print('Covariance Matrix \n%s' %cov_mat)
 print('NumPy Covariance Matrix: \n%s' %np.cov(X.T))
 
 #compute eigenvectors and eigenvalues
@@ -55,28 +54,6 @@ matrix_w = np.hstack((eig_pairs[0][1].reshape(6,1),
 print('Matrix W:\n%s' %matrix_w)
 
 Y = X.dot(matrix_w)
-# traces = []
-# for name in ('Iris-setosa', 'Iris-versicolor', 'Iris-virginica'):
-#     trace = plt.scatter(
-#         x=Y[0],
-#         y=Y[1],
-#         mode='markers',
-#         name=name,
-#         marker=ma.marker(
-#             size=12,
-#             line=Line(
-#                 color='rgba(217, 217, 217, 0.14)',
-#                 width=0.5),
-#             opacity=0.8))
-#     traces.append(trace)
-#
-# data = Data(traces)
-# layout = Layout(showlegend=True,
-#                 scene=Scene(xaxis=XAxis(title='PC1'),
-#                 yaxis=YAxis(title='PC2'),))
-# fig = Figure(data=data, layout=layout)
-# py.iplot(fig)
-
 
 pca = PCA(n_components=6)
 
@@ -106,5 +83,3 @@ print var2
 plt.plot(var1)
 plt.show()
 
-#X1=pca.fit_transform(X)
-#print(X1)
